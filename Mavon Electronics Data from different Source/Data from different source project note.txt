@@ -1,0 +1,117 @@
+Mavon Electronics: Is a global retail that sells TV's, computer, appliances and more.
+
+Data Sources:
+Transactional record in SQL databases
+Product details in CSV file
+A colleague from IT exported the store location in PDF.
+
+
+Features Used:
+Power Query 
+Power Pivot 
+DAX
+Data Model 
+
+
+---
+
+
+STEP 1:
+Use Power query to Extract, Transform and Load Data from multiple Sources. Create data connections and buid automated workflow that can be applied easily.
+- Load Sales data from databases
+  SQL Server_name = ZION_HP_PROBOOK\SQLEXPRESS
+  Database Name = Sales Record
+  Transform Data - into Query Editor(To explore the data)
+  - Home, close & load to --> Only creat connection, Add this data model
+- Load Product from flatfile(CSV)
+- Load Store from pdf
+  - Only select the important column, remove the rest
+  - Promote Row1 to become the header row  
+
+- Create Calendar from Sales Data
+  - Right click and duplicate sales table
+  - Keep Order date, remove other column
+  - Remove all Duplicate from the table
+  - Rename and change table name 
+  - Add name of day, start of week, start of month, and year
+
+
+STEP 2: Data Model (Store compress data and create relational models to join tables)... Sales(Fact table), others(Dimension table)
+  - We create 1 -to- Many relationship in our data model
+
+STEP 3:
+Power Pivot -- Create Pivot table from data model
+
+STEP 4:
+DAX
+
+Total Revenue
+=SUMX(Sales, [Quantity]*RELATED(Products[Price])), I will Get the same result even if I write it like this =SUMX(Sales, Sales[Quantity]*RELATED(Products[Price]))
+---The most important thing is that the column should be indicated as the first parameter, followed by a comma.
+ 
+Total Orders
+=DISTINCTCOUNT([Order_Number])
+
+When calculating something like total orders. You want to be careful and make sure you use DISTINCTCOUNT(orders column)
+
+-- You will get error while creating total revenue.
+- Edit sales table
+  - Create a new column FROM EXAMPLE
+  - Use the example from sales usd column
+  - Convert new column to currency
+
+-- Retry to Total Revenue measure and error should disappear.
+
+VISUALIZATION
+- Revenue by Month
+- Orders by category
+
+//Create Date Dimension
+
+= (StartDate as date, EndDate as date)=>
+
+let
+    //Capture the date range from the parameters
+    StartDate = #date(Date.Year(StartDate), Date.Month(StartDate), 
+    Date.Day(StartDate)),
+    EndDate = #date(Date.Year(EndDate), Date.Month(EndDate), 
+    Date.Day(EndDate)),
+
+    //Get the number of dates that will be required for the table
+    GetDateCount = Duration.Days(EndDate - StartDate),
+
+    //Take the count of dates and turn it into a list of dates
+    GetDateList = List.Dates(StartDate, GetDateCount, 
+    #duration(1,0,0,0)),
+
+    //Convert the list into a table
+    DateListToTable = Table.FromList(GetDateList, 
+    Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
+
+    //Create various date attributes from the date column
+    //Add Year Column
+    YearNumber = Table.AddColumn(DateListToTable, "Year", 
+    each Date.Year([Date])),
+
+    //Add Quarter Column
+    QuarterNumber = Table.AddColumn(YearNumber , "Quarter", 
+    each "Q" & Number.ToText(Date.QuarterOfYear([Date]))),
+
+    //Add Week Number Column
+    WeekNumber= Table.AddColumn(QuarterNumber , "Week Number", 
+    each Date.WeekOfYear([Date])),
+
+    //Add Month Number Column
+    MonthNumber = Table.AddColumn(WeekNumber, "Month Number", 
+    each Date.Month([Date])),
+
+    //Add Month Name Column
+    MonthName = Table.AddColumn(MonthNumber , "Month", 
+    each Date.ToText([Date],"MMMM")),
+
+    //Add Day of Week Column
+    DayOfWeek = Table.AddColumn(MonthName , "Day of Week", 
+    each Date.ToText([Date],"dddd"))
+
+in
+    DayOfWeek

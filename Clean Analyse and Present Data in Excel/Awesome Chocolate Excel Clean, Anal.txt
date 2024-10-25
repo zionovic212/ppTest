@@ -1,0 +1,64 @@
+Awesome Chocolate Excel Clean, Analyse, and Present data Project
+
+
+## Cleaning Steps
+--- Things the note before removing duplicate from a column. Look for a column that contain what must be unique value. As such when you remove duplicate, you are sure that you are not mistakenly deleting important information....Imaging a big company data with thousands of employee. It most likely that more than one employee have the same name. Now, performing a "remove duplicate" on such column can be dangerous. In that case, something like employee ID is a best place to perform "remove duplicate" operation.
+
+
+- Check each column and remove duplicates data
+- 
+
+
+## Business Questions
+1) Quick Analysis of the data (To have a quick overview of who our staff is)
+2) Information finder
+3) Extended Info. Finder
+4) Male VS. Female Comparison
+5) Calculate Annual Bonus
+
+
+
+1) Quick Analysis of the data
+
+** Using formular
+- Count of employees
+- Average salary
+- Average Age
+- Average Tenure
+- Female Ratio %
+
+Tenure is the difference between Today and "date joined"
+
+2) We shall use Excel Lookup function to create Information Finder
+Lookup function include:: XLOOKUP & VLOOKUP
+Then TRANSPOSE function was used to create the output in horizontal format
+
+3) FILTER function was used to create Extended information finder
+   Then CHOOSECOLS function was used to select the required columns from the filter
+   Then SORT function was used to sort the result according to salary column in descending order.
+
+Here is the formular: 
+SORT(CHOOSECOLS(FILTER(staff, staff[Department]=E3), 1,6,7), 2, -1)
+
+4) Male vs. Female comparison using pivot table.
+  With the addition of a slicer
+
+5) Bonus calcualation
+- Criteria for bonus: Staff will get 3% of their annual salary as bonus provided they have spent 2 and above at the company.
+- If they have spent less than 2 years, their bonus is 2%.
+
+6) Salary Spread
+- Histogram with a bin size of 10,000 and box plot was used to represent to represent the spread of the staff
+
+Box Plot Explained
+- Top wiskers represent the maximum number
+- Lower wisker represent the minumum number
+- top bar represent upper quartile 75th percentile
+- Lower bar represent lower quartile, 25th percentile
+- line in-between the rectangle represnt the median
+- x mark represent the average
+- The rectangle represent interquartile range.
+
+7) Salary vs. Rating
+Pivot table and scatter plot
+

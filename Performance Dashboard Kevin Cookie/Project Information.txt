@@ -1,0 +1,35 @@
+Project title: Performance Dashboard for Kelvin Cookie company
+
+project link:: https://www.youtube.com/watch?v=MTlQvyNQ3PM
+By:: Kevin Stratvert
+
+
+## What is the purpose of a dashboard:
+With a dashboard you can show relevant information to stakeholder at a glance.
+It is a combination of more than visuals or chart.
+
+An interactive dashboard automatically gets updated as new data is added.
+
+Business Question: Leadership always ask question about Profit, unit sales, and other business questions.
+Therefore I decided to set up a dashboard to provide answers to those questions
+
+
+About the company:
+Kevin cookie is a company that sells cookie, here is a datasheet by market for the kevin cookie company.
+
+
+
+
+
+
+
+## To create a slider
+- Click on any chart
+- From "Pivotchartanalyze rebbon" click "insert slicer"
+- Follow prompt
+
+
+## To connect slider to all chart
+- Right click on the slider
+- Click report connection 
+- FOllow prompt

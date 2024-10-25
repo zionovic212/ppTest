@@ -1,0 +1,49 @@
+I learnt the following in the course:
+
+1) How to approach a data analysis project
+2) A real-world example of data with 10 problems
+3) Step by step walkthrough
+4) How to calculate descriptive statistics (mean, median, quartiles, range, distinct items & count)
+5) Exploratory data analysis in Excel
+6) Analysis with formulas vs. pivots (necessary techniques)
+7) Top/bottom performing items
+8) Anomaly detection
+9) Best in class analysis
+10) Complete report preparation
+11) Combining data in different tables (spreadsheets)
+12) Answering open-ended questions
+13) Preparing and using Excel charts
+14) Challenges & homework assignment
+
+
+I also learn below Excel features:
+1) Using Tables
+2) Formulas
+3) Pivot Tables & Power Pivot measures
+4) Conditional formatting
+5) Charts
+6) Data Validation
+7) Keyboard Shortcuts & tricks
+
+
+Median = 3437	This is the midpoint of your data when arranged in ascending (or descending) order
+Average = 4136	This is the sum(total) of all the values divided by the count of the values.
+
+From the above numbers, the average is higher than the median which means there are more higher amount in the data than lower amount.
+
+Quartiles refer to the 1/4th or 3/4th points in your data when arranged in sort order.
+
+Q1 = 1652
+
+First, 1/4th of the values are less than or equal to 1652.
+This means that 25% of the data values (or one-quarter) are less than or equal to 1652.
+
+Q3 = 6245
+This means that 75% of the data values are less than or equal to 16.
+Same as: The top 1/4 of the values are above 6245
+
+0
+1/4 
+1/2
+3/4
+1

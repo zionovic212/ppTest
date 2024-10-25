@@ -1,0 +1,3 @@
+
+
+When calculating something like total orders. You want to be careful and make sure you use DISTINCTCOUNT(orders column)
